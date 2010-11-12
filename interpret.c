@@ -17,9 +17,7 @@
 #include "compiler.h"
 #include "regexp.h"
 #include "master.h" 
-#ifdef DEBUG
-#include "debug.h"
-#endif
+
 #ifdef OPCPROF
 #include "opc.h"
 
@@ -4245,9 +4243,7 @@ void call___INIT P1(object_t *, ob)
     if (!num_functions) return;
     
     /* ___INIT turns out to be always the last function */
-debug_message(sprintf("num_functions : %d", num_functions));
     cfp = &progp->function_table[num_functions - 1];
-
     if (cfp->name[0] != APPLY___INIT_SPECIAL_CHAR) return;
     push_control_stack(FRAME_FUNCTION | FRAME_OB_CHANGE);
     current_prog = progp;
@@ -4258,7 +4254,7 @@ debug_message(sprintf("num_functions : %d", num_functions));
 #endif
     caller_type = ORIGIN_DRIVER;
     csp->num_local_variables = 0;
-   debug_message("in here3"); 
+    
     setup_new_frame(num_functions - 1 + progp->last_inherited);
     previous_ob = current_object;
     

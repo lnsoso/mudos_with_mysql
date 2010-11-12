@@ -200,8 +200,3 @@ set_simul_efun P1(object_t *, ob) {
     simul_efun_ob = ob;
     add_ref(simul_efun_ob, "set_simul_efun");
 }
-
-
-
-
-

@@ -3821,19 +3821,3 @@ f_next_inventory PROT((void))
 	*sp = const0;
 }
 #endif
-
-// add by soso on 2010-10-28 for biniaries support
-#ifdef F_BINARY_VALID
-void
-f_binary_valid PROT((void))
-{
-    int i;
-#ifdef LPC_TO_C
-    i = check_binary(sp->u.string, 0);
-#else
-    i = check_binary(sp->u.string);
-#endif
-    free_string_svalue(sp);
-    put_number(i);
-}
-#endif
